@@ -1,0 +1,14 @@
+<phpunit>
+  <testsuites>
+    <!-- very simple unit testing suite, -->
+    <!-- for pratice and get used to PHP unit testing. -->
+    <testsuite name="simple_test_suite">
+      <file>SimpleTest.php</file>
+    </testsuite>
+
+    <!-- testing models -->
+    <testsuite name="model_test_suite">
+      <!-- more test cases here ... -->
+    </testsuite>
+  </testsuites>
+</phpunit>
