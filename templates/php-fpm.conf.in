@@ -1,0 +1,62 @@
+; we try to keet this file as short as possible, for details description for 
+; each option and the defaults values, please read the sample config file
+; ${php-build:location}/etc/php-fpm.conf.default
+
+;include=etc/fpm.d/*.conf
+
+[global]
+pid = ${settings:php-fpm-pid}
+error_log = ${settings:php-fpm-error_log}
+log_level = ${settings:php-fpm-log_level}
+
+emergency_restart_threshold = 0
+emergency_restart_interval = 0
+
+process_control_timeout = 0
+
+daemonize = no
+ 
+;rlimit_files = 1024
+;rlimit_core = 0
+
+; pool name ('www' here)
+[www]
+;prefix = /path/to/pools/$pool
+
+listen = ${hosts:php-fpm}:${ports:php-fpm}
+;listen.backlog = -1
+;listen.allowed_clients = 127.0.0.1
+;listen.owner = nobody
+;listen.group = nobody
+;listen.mode = 0666
+
+user = ${users:php-fpm}
+group = ${users:php-fpm} 
+
+pm = ${settings:php-fpm-pm}
+pm.max_children = ${settings:php-fpm-pm-max_children}
+;pm.start_servers = ${settings:php-fpm-pm-start_servers}
+;pm.min_spare_servers = ${settings:php-fpm-pm-min_spare_servers}
+;pm.max_spare_servers = ${settings:php-fpm-pm-max_spare_servers}
+;pm.max_requests = ${settings:php-fpm-pm-max_requests}
+
+;pm.status_path = ${settings:php-fpm-pm-status_path}
+
+;ping.path = ${settings:php-fpm-ping-path}
+;ping.response = ${settings:php-fpm-ping-response}
+
+;access.log = ${settings:php-fpm-access-log} 
+;access.format = %R - %u %t "%m %r%Q%q" %s %f %{mili}d %{kilo}M %C%%
+ 
+;request_terminate_timeout = 0
+;request_slowlog_timeout = 0
+ 
+;slowlog = log/$pool.log.slow
+
+;rlimit_files = 1024
+;rlimit_core = 0
+ 
+;chroot = 
+;chdir = /var/www
+ 
+catch_workers_output = no

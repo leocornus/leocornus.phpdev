@@ -1,0 +1,9 @@
+    # this file presents as a sample for Nginx master Web server to include
+    # virtual hosting Web Servers.  We are not using this file in any buildout
+    # config file.
+    # 
+    # Normally, just copy this to etc folder, and the master server's config
+    # will pick it up.  This is set up in buildout nginx-master.cfg under 
+    # settings key: nginx-vhost-incs-file.
+
+    #include /full/path/to/nginx/virtual/hosting/config/file;
