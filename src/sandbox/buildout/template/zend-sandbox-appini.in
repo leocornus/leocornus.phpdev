@@ -1,5 +1,6 @@
 [production]
-; error setting.
+; error setting. 
+; 0 is false, 1 is ture
 phpSettings.display_startup_errors = 0
 phpSettings.display_errors = 0
 
@@ -9,8 +10,18 @@ bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
 bootstrap.class = "Bootstrap"
 appnamespace = "Application"
 
+; the controller directory.
 resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+; 0 is false, 1 is true
 resources.frontController.params.displayExceptions = 0
+
+; layout settings.
+resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
+;resources.view[] =
+
+; database settings.
+;resources.db.adapter = "PDO_SQLITE"
+;resources.db.params.dbname = APPLICATION_PATH "/../data/db/guestbook.db"
 
 ; logging configuration.
 logging.stream.writerName = "Stream"

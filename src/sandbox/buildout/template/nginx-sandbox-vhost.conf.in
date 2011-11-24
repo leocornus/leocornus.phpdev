@@ -10,7 +10,12 @@
         # the document root.
         root ${pathes:sandbox-nginx-root};
 
-        #index index.php;
+        index index.php;
+
+        if (!-e $request_filename) {
+            # Zend application
+            rewrite ^.*$ /index.php?q=$1 last;
+        }
 
         # if the request starts with our frontcontroller, pass it on to fastcgi
         location ~ \.php$ {
