@@ -1,0 +1,40 @@
+    server {
+
+        client_max_body_size ${settings:sandbox-nginx-client_max_body_size};
+        # listen ip and port. this could be any ip and port for your application
+        # or you can use the master server's ip and port.
+        listen ${hosts:sandbox-nginx-ip}:${ports:sandbox-nginx};
+        server_name ${hosts:sandbox-nginx-hostname};
+        error_log ${settings:sandbox-nginx-error_log} ${settings:sandbox-nginx-error_log-level};
+        access_log ${settings:sandbox-nginx-access_log};
+        # the document root.
+        root ${pathes:sandbox-nginx-root};
+
+        #index index.php;
+
+        # if the request starts with our frontcontroller, pass it on to fastcgi
+        location ~ \.php$ {
+
+            # the buildout base should include the nginx-build location.
+            include ${settings:nginx-build-location}/conf/fastcgi_params;
+            # some fastcgi params
+            fastcgi_connect_timeout 60;
+            fastcgi_send_timeout 180;
+            fastcgi_read_timeout 180;
+            fastcgi_buffer_size 128k;
+            fastcgi_buffers 4 256k;
+            fastcgi_busy_buffers_size 256k;
+            fastcgi_temp_file_write_size 256k;
+            fastcgi_intercept_errors on;
+
+            # the upstream to php-fpm, should be define the Nginx master web server.
+            fastcgi_pass ${settings:php-fpm-upstream};
+            fastcgi_param SCRIPT_FILENAME ${pathes:sandbox-nginx-root}$fastcgi_script_name;
+            fastcgi_param PATH_INFO $fastcgi_script_name;
+            fastcgi_param APPLICATION_ENV ${settings:sandbox-zend-APPLICATION_ENV};
+
+            # track uploads in the 'uploadprogress' zone
+            # uploads expires 30s after they finish.
+            #track_uploads uploadprogress 30s;
+        }
+    }

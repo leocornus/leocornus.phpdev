@@ -14,11 +14,11 @@ resources.frontController.params.displayExceptions = 0
 
 ; logging configuration.
 logging.stream.writerName = "Stream"
-logging.stream.writerParams.stream = "${settings:zend-sandbox-logging-file}"
+logging.stream.writerParams.stream = "${settings:sandbox-zend-logging-file}"
 logging.stream.writerParams.mode = "a"
 logging.stream.filterName = "Priority"
 ; 7 is debug and 1 is critical
-logging.stream.filterParams.priority = ${settings:zend-sandbox-logging-priority}
+logging.stream.filterParams.priority = ${settings:sandbox-zend-logging-priority}
 logging.stream.formatterParams.format = "%timestamp% %priorityName% (%pid% - %method%): %message%"
 
 ; key and value for quick unit testing.
