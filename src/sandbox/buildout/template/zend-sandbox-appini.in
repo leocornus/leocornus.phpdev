@@ -24,6 +24,8 @@ resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
 ;resources.db.params.dbname = APPLICATION_PATH "/../data/db/guestbook.db"
 
 ; logging configuration.
+; timezone used for logging message.
+logging.timezone = "America/New_York"
 logging.stream.writerName = "Stream"
 logging.stream.writerParams.stream = "${settings:sandbox-zend-logging-file}"
 logging.stream.writerParams.mode = "a"

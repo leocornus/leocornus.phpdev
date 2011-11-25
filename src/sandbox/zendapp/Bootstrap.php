@@ -10,7 +10,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
     protected function _initApplicationLogger() {
 
         $config = new Zend_Config($this->getOptions());
+
         // set up logger for logging message.
+        // Zend logger requires a timezone setting, otherwise it will through 
+        // out a warning message.
+        date_default_timezone_set($config->logging->timezone);
         $writer = new Zend_Log_Writer_Stream($config->logging->stream
                                              ->writerParams->stream);
         $filter = new Zend_Log_Filter_Priority((int) $config->logging
