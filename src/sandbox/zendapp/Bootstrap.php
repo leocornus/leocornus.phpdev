@@ -3,6 +3,16 @@
 class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
     /**
+     * initialize the doctype resource
+     */
+    protected function _initDoctype() {
+
+        $this->bootstrap('view');
+        $view = $this->getResource('view');
+        $view->doctype('XHTML1_STRICT');
+    }
+
+    /**
      * initialize the application logger as a class resources.
      *
      * this will be replace with plugin resources after upgrade to Zend 1.11.x.
