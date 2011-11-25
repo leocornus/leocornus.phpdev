@@ -1,6 +1,13 @@
 <?php
 
 require_once 'ZendTestHelper.php';
+// the helper script should get ready the $application.
+
+// perform some Zend registerying work, which should happen in run() function.
+$config = new Zend_Config($application->getOptions());
+Zend_Registry::set('config', $config);
+//$db = Zend_Db::factory($config->resources->db);
+//Zend_Registry::set('db',$db);
 
 /**
  * a very simple test case.

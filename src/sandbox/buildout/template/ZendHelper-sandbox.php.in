@@ -39,7 +39,7 @@ defined('APPLICATION_PATH') || define('APPLICATION_PATH',
 // Define application environment
 defined('APPLICATION_ENV')  || define('APPLICATION_ENV',
                                       (getenv('APPLICATION_ENV') ?
-                                       getenv('APPLICATION_ENV') : 'production'));
+                                       getenv('APPLICATION_ENV') : '${:application-env}'));
 
 // Ensure library/ is on include_path
 //set_include_path(implode(PATH_SEPARATOR, array(
@@ -50,19 +50,10 @@ defined('APPLICATION_ENV')  || define('APPLICATION_ENV',
 /** Zend_Application */
 require_once 'Zend/Application.php';
 
-// Create application, bootstrap, and run
-$app = new Zend_Application(
+// Create application, bootstrap, 
+$application = new Zend_Application(
     APPLICATION_ENV,
     '${pathes:sandbox-zendapp-config}'
 );
 
-//self::$app->bootstrap()->run();
-$app->bootstrap();
-// perform some Zend registerying work, which should happen in run() function.
-$config = new Zend_Config($app->getOptions());
-Zend_Registry::set('config', $config);
-//$db = Zend_Db::factory($config->resources->db);
-//Zend_Registry::set('db',$db);
-
-// set up default time zone.
-date_default_timezone_set('America/New_York');
+$bootstrap = $application->bootstrap();
