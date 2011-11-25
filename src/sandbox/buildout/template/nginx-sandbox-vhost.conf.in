@@ -13,8 +13,8 @@
         index index.php;
 
         if (!-e $request_filename) {
-            # Zend application
-            rewrite ^.*$ /index.php?q=$1 last;
+            # Zend application zendapp
+            rewrite ^/zendapp/.*$ /zendapp/index.php?q=$1 last;
         }
 
         # if the request starts with our frontcontroller, pass it on to fastcgi
