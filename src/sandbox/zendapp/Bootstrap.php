@@ -12,6 +12,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
         $view->doctype('XHTML1_STRICT');
     }
 
+    protected function _initAutoloadModules() {
+
+        $moduleLoader = new Zend_Application_Module_Autoloader(
+                            array(
+                              'namespace' => '',
+                              'basePath' => APPLICATION_PATH)
+                          );
+        return $moduleLoader;
+    }
+
     /**
      * initialize the application logger as a class resources.
      *

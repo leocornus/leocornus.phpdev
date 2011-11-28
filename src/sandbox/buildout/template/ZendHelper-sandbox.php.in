@@ -55,5 +55,4 @@ $application = new Zend_Application(
     APPLICATION_ENV,
     '${pathes:sandbox-zendapp-config}'
 );
-
-$bootstrap = $application->bootstrap();
+$bootstrap = $application->getBootstrap();

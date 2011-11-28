@@ -3,6 +3,7 @@
 require_once 'ZendTestHelper.php';
 // the helper script should get ready the $application.
 
+$bootstrap->bootstrap();
 // perform some Zend registerying work, which should happen in run() function.
 $config = new Zend_Config($application->getOptions());
 Zend_Registry::set('config', $config);

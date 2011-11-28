@@ -17,11 +17,12 @@ resources.frontController.params.displayExceptions = 0
 
 ; layout settings.
 resources.layout.layoutPath = APPLICATION_PATH "/layouts/scripts/"
-;resources.view[] =
+resources.view[] =
 
 ; database settings.
-;resources.db.adapter = "PDO_SQLITE"
-;resources.db.params.dbname = APPLICATION_PATH "/../data/db/guestbook.db"
+; using the SQLite...
+resources.db.adapter = "PDO_SQLITE"
+resources.db.params.dbname = APPLICATION_PATH "/../data/db/guestbook.db"
 
 ; logging configuration.
 ; timezone used for logging message.
@@ -44,8 +45,12 @@ testingkey = "testing value"
 [testing : production]
 phpSettings.display_startup_errors = 1
 phpSettings.display_errors = 1
+resources.db.adapter = "PDO_SQLITE"
+resources.db.params.dbname = APPLICATION_PATH "/../data/db/guestbook-testing.db"
 
 [development : production]
 phpSettings.display_startup_errors = 1
 phpSettings.display_errors = 1
 resources.frontController.params.displayExceptions = 1
+resources.db.adapter = "PDO_SQLITE"
+resources.db.params.dbname = APPLICATION_PATH "/../data/db/guestbook-dev.db"
