@@ -1,2 +1,37 @@
 
 some facilities/utilites to make PHP development easier.
+
+What does leocornus.phpdev offer?
+=================================
+
+The leocornus.phpdev will get ready the php development environment set up for
+you, which include the following software:
+
+* download, compile and build PHP-FPM from source code, you could easily 
+  specify the PHP version you want to use.  We target at PHP version 5.3.3
+  and higher, since PHP-FPM is bundle with PHP since that version.
+* install PHPUnit for unit testing your PHP application.
+* install Zend Frameword for your PHP/Zend application.
+* download, compile and build Nginx as the web server for your PHP/Zend
+  application.
+
+How to use it?
+==============
+
+It is quite easy to use the leocornus.phpdev.  Assume we have a PHP/Zend 
+application leocornus.php.sandbox, the following steps will set it up in 
+minutes:
+
+1. symlink the leocornus.php.sandbox as sandbox in folder src
+
+2. copy the buildout-dolphin.cfg to buildout.cfg
+
+3. update the settings in buildout.cfg to fit your local environment.
+
+4. $ python bootstrap.py
+
+5. $ bin/buildout
+
+6. $ sudo bin/supervisord
+
+7. $ bin/supervisorctl status
